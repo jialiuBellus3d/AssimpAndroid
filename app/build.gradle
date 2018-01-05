@@ -81,19 +81,19 @@ model {
                         srcDirs 'src/main/jni'
                     }
                 }
-                jniLibs {
-                    // for shared lib, lib need to be pushed to the target too
-                    // Once libs are copied into app/src/main/jniLibs directory,
-                    // Android Studio will pack them into APK's lib/ directory
-                    // Here we like to avoid another duplication by pointing
-                    // to the files that containing our libs' distribution location
-                    // so the same file is used by compiler at host, also packed
-                    // into APk to be used at Target (phone/tablet)
-                    source {
-                        srcDir "src/main/externals/assimp-3.0/libs"
-                        srcDir "src/main/externals/opencv-3.0.0/libs"
-                    }
-                }
+//                jniLibs {
+//                    // for shared lib, lib need to be pushed to the target too
+//                    // Once libs are copied into app/src/main/jniLibs directory,
+//                    // Android Studio will pack them into APK's lib/ directory
+//                    // Here we like to avoid another duplication by pointing
+//                    // to the files that containing our libs' distribution location
+//                    // so the same file is used by compiler at host, also packed
+//                    // into APk to be used at Target (phone/tablet)
+//                    source {
+////                        srcDir "src/main/externals/assimp-3.0/libs"
+////                        srcDir "src/main/externals/opencv-3.0.0/libs"
+//                    }
+//                }
             }
         }
 
@@ -103,6 +103,10 @@ model {
                 proguardFiles.add(file('proguard-rules.txt'))
             }
         }
+
+//        packagingOptions {
+//            exclude "lib/armeabi-v7a/libopencv_java3.so"
+//        }
 
     }
 }
